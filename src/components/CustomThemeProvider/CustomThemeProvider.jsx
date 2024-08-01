@@ -16,7 +16,7 @@ export const useToggleThemeContext = () => {
 };
 
 export const CustomThemeProvider = (props) => {  
-  const [themeMode, setThemeMode] = useLocalStorage('theme', useMediaQuery('(prefers-color-scheme: dark)') ? 'dark' : 'light');
+  const [themeMode, setThemeMode] = useLocalStorage('theme', useMediaQuery('(prefers-color-scheme: light)') ? 'dark' : 'light');
 
   const toggleThemeMode = () => {
     setThemeMode(themeMode == "dark" ? "light" : "dark");
