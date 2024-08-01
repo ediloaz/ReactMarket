@@ -13,9 +13,6 @@ export const Carousel = ({ images }) => {
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h5" align="center" sx={{ mb: 4 }}>
-        Carousel Demo
-      </Typography>
       <CarouselMui>
         {images?.map((src, index) => (
           <Box key={index}>
