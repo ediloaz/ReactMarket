@@ -1,6 +1,7 @@
 import { ProductDetailed } from "@components/ProductDetailed/ProductDetailed";
 import { ProductMiniature } from "@components/ProductMiniature/ProductMiniature";
 import { Grid, Typography } from "@mui/material";
+import { ProductsList } from "@pages/ProductsList/ProductsList";
 import { usePageStore } from "@stores/usePageStore";
 
 const TEST_IMAGES = [
@@ -19,6 +20,7 @@ export const Home = () => {
   return (
     <>
       {/* <Typography variant="h1" textAlign="center" height="100vh" alignContent="center" >Hola React Market</Typography> */}
+      <ProductsList />
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} md={4}>
           <ProductMiniature title="Producto 1" description={TEST_DESCRIPTION} price={25000} images={TEST_IMAGES} />

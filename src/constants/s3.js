@@ -1,0 +1,1 @@
+export const S3_URL_IMAGE = import.meta.env.VITE_S3_IMAGE_URL;

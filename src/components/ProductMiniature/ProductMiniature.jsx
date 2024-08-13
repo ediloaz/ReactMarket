@@ -23,7 +23,7 @@ export const ProductMiniature = (props) => {
             <Typography id="size" component="span" variant="caption">100ml</Typography>  
             </Box>
             <Typography id="title" variant="h4">{title}</Typography>
-            <Typography variant="body1">{description}</Typography>
+            <Typography variant="body1" className="ellipsis" >{description}</Typography>
             <Typography id="price" variant="h5">{formatCurrency(price || 0)}</Typography>
             <Typography variant="body2">{categories.join(', ')}</Typography>
             <Typography variant="body2">{tags.join(', ')}</Typography>

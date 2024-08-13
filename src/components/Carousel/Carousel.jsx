@@ -13,10 +13,10 @@ export const Carousel = ({ images }) => {
 
   return (
     <Container maxWidth="md">
-      <CarouselMui>
+      <CarouselMui autoPlay={false}>
         {images?.map((src, index) => (
           <Box key={index}>
-            <img src={src} alt={`Image ${index}`} />
+            <img src={src} alt={`Image ${index}`} style={{ maxHeight: '200px'}} />
           </Box>
         ))}
       </CarouselMui>
