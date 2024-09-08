@@ -1,8 +1,14 @@
-import { Box, Grid, Typography } from "@mui/material"
+import { useState } from "react";
+import { Box, Dialog, Grid, IconButton, Typography, useTheme } from "@mui/material"
 import { Carousel } from "@components/Carousel/Carousel";
 import { formatCurrency } from "@helpers/money";
+import { FavoriteBorderRounded, HeartBrokenRounded } from "@mui/icons-material";
+import { ProductDetailed } from "@components/ProductDetailed/ProductDetailed";
 
 export const ProductMiniature = (props) => {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const theme = useTheme();
   const {
     title = '',
     description = '',
@@ -12,23 +18,59 @@ export const ProductMiniature = (props) => {
     tags = [],
   } = props;
 
+  if (showDetails) return <ProductDetailedContainer {...props} showDetails={showDetails} setShowDetails={setShowDetails} />
+
   return (
-      <Box textAlign="center" p={2} >
-        <Grid container spacing={2}>
+      <Box 
+        m={2} 
+        p={2}
+        alignContent="center"
+        justifyContent="center"
+        height={400}
+        borderRadius={10}
+        textAlign="center"
+        // bgcolor={theme.palette.warning.light}
+        bgcolor={theme.palette.background.paper} 
+        boxShadow="0 0 10px rgba(200,200,200,0.1)"
+        onClick={() => setShowDetails(true)}
+      >
+        <Grid container>
+          <FavoriteIcon />
           <Grid item xs={12} md={6}>
-            <Carousel images={images} />
+            <img src={images?.[0]} alt={`Imagen de ${title}`} width="auto" height="100%" style={{ maxHeight: '300px', mixBlendMode: 'multiply' }} />
           </Grid>
           <Grid item xs={12} md={6} textAlign={{ xs: "center", md: "left" }}>
             <Box>
-            <Typography id="size" component="span" variant="caption">100ml</Typography>  
+            <Typography id="title" fontWeight="bold">{title}</Typography>
             </Box>
-            <Typography id="title" variant="h4">{title}</Typography>
-            <Typography variant="body1" className="ellipsis" >{description}</Typography>
-            <Typography id="price" variant="h5">{formatCurrency(price || 0)}</Typography>
-            <Typography variant="body2">{categories.join(', ')}</Typography>
-            <Typography variant="body2">{tags.join(', ')}</Typography>
+            <Typography id="price" >{formatCurrency(price || 0)}</Typography>
           </Grid>
         </Grid>
       </Box>
+  )
+}
+
+const FavoriteIcon = () => {
+  return (
+    <Box position="absolute" right={20} m={1}>
+      <IconButton>
+        <FavoriteBorderRounded />
+        {/* FavoriteRounded */}
+      </IconButton>
+    </Box>
+  )
+}
+
+const ProductDetailedContainer = (props) => {
+  const { showDetails, setShowDetails } = props;
+  return (
+    <Dialog  onClose={() => setShowDetails(false)} open={showDetails}>
+      <Box 
+        width="100%"
+        height="90vh"
+      >
+        <ProductDetailed {...props} />
+      </Box>
+    </Dialog>
   )
 }
