@@ -5,9 +5,12 @@ import path from 'path';
 export default ({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
+  const base = env.VITE_ENV == 'dev' ? "/" : "/ReactMarket/dist/";
+
   const apiUrl = env.VITE_API_URL;
 
   return defineConfig({
+    base,
     resolve: {
       alias: {
         '@layouts': path.resolve(__dirname, 'src/layouts/'),
