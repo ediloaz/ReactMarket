@@ -4,12 +4,14 @@ import { Carousel } from "@components/Carousel/Carousel";
 import { formatCurrency } from "@helpers/money";
 import { FavoriteBorderRounded, HeartBrokenRounded } from "@mui/icons-material";
 import { ProductDetailed } from "@components/ProductDetailed/ProductDetailed";
+import { ShareButton } from "@components/ShareButton/ShareButton";
 
 export const ProductMiniature = (props) => {
   const [showDetails, setShowDetails] = useState(false);
 
   const theme = useTheme();
   const {
+    id = 1,
     title = '',
     description = '',
     price = 0,
@@ -36,6 +38,7 @@ export const ProductMiniature = (props) => {
       >
         <Grid container>
           <FavoriteIcon />
+          <ShareButton title={title} price={formatCurrency(price || 0)} id={id} />
           <Grid item xs={12} md={6} minHeight={300} display="flex" alignItems="center" justifyContent="center">
             <img src={images?.[0]} alt={`Imagen de ${title}`} width="auto" height="100%" style={{ maxHeight: '300px', mixBlendMode: 'multiply' }} />
           </Grid>
