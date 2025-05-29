@@ -22,7 +22,7 @@ export const ProductsList = () => {
   return (
     <>
       <PaginationContainer currentPage={currentPage} handleChange={handleChange} />
-      <Grid container spacing={2}>
+      <Grid container columnSpacing={2} rowSpacing={6} justifyContent="center" alignItems="center">
         {currentProducts.map((product) => (
           <Grid key={product?.id} item xs={12} sm={6} md={4}>
             <ProductMiniature 
