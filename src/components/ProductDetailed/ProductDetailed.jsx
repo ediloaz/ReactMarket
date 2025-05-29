@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material"
 import { Carousel } from "@components/Carousel/Carousel";
 import { formatCurrency } from "@helpers/money";
+import { Link } from "react-router-dom";
 
 export const ProductDetailed = (props) => {
   const {
@@ -16,7 +17,7 @@ export const ProductDetailed = (props) => {
       <Box textAlign="center" p={2}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-            <Button variant="text" href={`/detalle/${props?.id ?? 1}`}>
+            <Button variant="text" to={`/detalle/${props?.id ?? 1}`} component={Link} color="primary" size="large" fullWidth>
               Ver en grande
             </Button>
           </Grid>
