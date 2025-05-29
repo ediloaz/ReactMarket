@@ -3,7 +3,7 @@ import { usePageStore } from "@stores/usePageStore";
 
 export const ProductsList = () => {
   const setTitle = usePageStore((store) => store.setTitle);
-  setTitle('Hola React Market');
+  setTitle('Perfumería en línea de Puriscal');
   return (
     <_ProductsList />
   );
