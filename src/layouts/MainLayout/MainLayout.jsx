@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { Box, Container } from "@mui/material";
 import { Outlet } from 'react-router-dom';
 import { useStaticStore } from '@stores/useStaticStore';
+import { TopHeader } from '@components/TopHeader/TopHeader';
+import { BottomFooter } from '@components/BottomFooter/BottomFooter';
 
 export const MainLayout = () => {
   const { fetchStaticData } = useStaticStore((state) => state);
@@ -11,10 +13,12 @@ export const MainLayout = () => {
   }, [])
 
   return (
-    <Box sx={{ display: "flex" }} mt="5em">
-      <Container maxWidth={'xl'}>
-        <Outlet />
-      </Container>
+    <Box>
+      <TopHeader />
+        <Container maxWidth={'xl'}>
+          <Outlet />
+        </Container>
+      <BottomFooter />
     </Box>
   );
 };

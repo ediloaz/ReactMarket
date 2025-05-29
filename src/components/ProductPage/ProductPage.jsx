@@ -1,8 +1,9 @@
-import { Box, Button, Grid, Typography } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { Carousel } from "@components/Carousel/Carousel";
 import { formatCurrency } from "@helpers/money";
+import { useProductPage } from "./useProductPage";
 
-export const ProductDetailed = (props) => {
+export const ProductPage = (props) => {
   const {
     title = '',
     description = '',
@@ -12,13 +13,13 @@ export const ProductDetailed = (props) => {
     tags = [],
   } = props;
 
+  const { id } = useProductPage(props);
+
   return (
       <Box textAlign="center" p={2}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
-            <Button variant="text" href={`/detalle/${props?.id ?? 1}`}>
-              Ver en grande
-            </Button>
+            Ver en grande (id: {id})
           </Grid>
           <Grid item xs={12} md={6}>
             <Carousel images={images} />

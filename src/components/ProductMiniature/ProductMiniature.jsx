@@ -36,7 +36,7 @@ export const ProductMiniature = (props) => {
       >
         <Grid container>
           <FavoriteIcon />
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} minHeight={300} display="flex" alignItems="center" justifyContent="center">
             <img src={images?.[0]} alt={`Imagen de ${title}`} width="auto" height="100%" style={{ maxHeight: '300px', mixBlendMode: 'multiply' }} />
           </Grid>
           <Grid item xs={12} md={6} textAlign={{ xs: "center", md: "left" }}>
@@ -64,10 +64,12 @@ const FavoriteIcon = () => {
 const ProductDetailedContainer = (props) => {
   const { showDetails, setShowDetails } = props;
   return (
-    <Dialog  onClose={() => setShowDetails(false)} open={showDetails}>
+    <Dialog onClose={() => setShowDetails(false)} open={showDetails}>
       <Box 
         width="100%"
         height="90vh"
+        maxHeight={600}
+        overflow="auto"
       >
         <ProductDetailed {...props} />
       </Box>
