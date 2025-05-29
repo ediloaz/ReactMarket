@@ -15,7 +15,7 @@ export const MainLayout = () => {
   return (
     <Box>
       <TopHeader />
-        <Container maxWidth={'xl'}>
+        <Container maxWidth={'xl'} sx={{minHeight: 'calc(100vh - 66px - 46px)'}}>
           <Outlet />
         </Container>
       <BottomFooter />
